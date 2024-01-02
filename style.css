@@ -1,4 +1,15 @@
-#subButton {
+#modalButton {
     width: 100px;
     height: 30px;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 50;
+    top: 50;
+}
+
+.hidden {
+    display: none;
 }

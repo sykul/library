@@ -5,9 +5,9 @@ function Book(title) {
 }
 
 function addBookToLibrary() {
-    let userInput = document.getElementById('inputField').value;
-    alert(userInput);
+    modal.classList.toggle('hidden');
 }
 
-const subButton = document.getElementById('subButton');
-subButton.addEventListener('click', addBookToLibrary, false)
+const modal = document.getElementById('addBookModal');
+const modalButton = document.getElementById('modalButton');
+modalButton.addEventListener('click', addBookToLibrary, false);
