@@ -10,4 +10,9 @@ function addBookToLibrary() {
 
 const modal = document.getElementById('addBookModal');
 const modalButton = document.getElementById('modalButton');
+const span = document.getElementsByClassName("close")[0];
 modalButton.addEventListener('click', addBookToLibrary, false);
+
+span.onclick = function() {
+    modal.classList.toggle('hidden');
+}
