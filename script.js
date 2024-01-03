@@ -4,15 +4,26 @@ function Book(title) {
     this.title = title;
 }
 
-function addBookToLibrary() {
+function toggleHidden() {
+    inputBox.value = '';
     modal.classList.toggle('hidden');
+}
+
+function addBookToArray() {
+    myLibrary.push(inputBox.value);
+    inputBox.value = '';
+}
+
+function displayBooks() {
+    
 }
 
 const modal = document.getElementById('addBookModal');
 const modalButton = document.getElementById('modalButton');
-const span = document.getElementsByClassName("close")[0];
-modalButton.addEventListener('click', addBookToLibrary, false);
+const closeButton = document.getElementsByClassName("close")[0];
+const inputButton = document.getElementById('inputButton');
+const inputBox = document.getElementById('inputBox')
 
-span.onclick = function() {
-    modal.classList.toggle('hidden');
-}
+modalButton.addEventListener('click', toggleHidden, false);
+closeButton.addEventListener('click', toggleHidden, false);
+inputButton.addEventListener('click', addBookToArray, false);
