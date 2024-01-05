@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <button type="button" id="modalButton">Add book</button>
-    <div id="addBookModal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <label for="inputBox">Add a book.</label>
-            <input type="text" name="inputBox" id="inputBox">
-            <button type="button" id="inputButton"></button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <button type="button" class="modalButton">Add book</button>
+        </header>
+        <dialog id="addBookModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <label for="inputBox">Add a book.</label>
+                <form class="modalForm" method="dialog">
+                    <input type="text" name="inputBox" id="inputBox">
+                    <input type="submit" id="inputButton"></input>
+                </form>
+            </div>
+        </dialog>
+        <div class="card">
         </div>
-    </div>
-</body>
+    </body>
 </html>
