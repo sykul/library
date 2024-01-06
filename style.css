@@ -40,7 +40,8 @@ header {
   cursor: pointer;
 }
 
-.card {
+.card-area {
+  display: grid;
   padding: 1rem;
   border: 1px solid black;
   margin: 1rem auto;
