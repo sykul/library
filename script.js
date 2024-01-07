@@ -20,6 +20,8 @@ function addBookToArray() {
 }
 
 function displayBooks() {
+    const cardAreaChildren = document.querySelectorAll('.card-area > div');
+    cardAreaChildren.forEach((element) => element.remove());
     for (const book in myLibrary) {
         const newDiv = document.createElement('div');
         const bookTitle = document.createTextNode(myLibrary[book]);
