@@ -24,15 +24,16 @@ function displayBooks() {
     cardAreaChildren.forEach((element) => element.remove());
     for (const book in myLibrary) {
         const newDiv = document.createElement('div');
+        newDiv.classList.add('card');
         const bookTitle = document.createTextNode(myLibrary[book]);
         newDiv.appendChild(bookTitle);
         cardArea.appendChild(newDiv);
     }
 }
 
-const modal = document.getElementById('addBookModal');
-const modalButton = document.getElementsByClassName('modalButton')[0];
-const closeButton = document.getElementsByClassName("close")[0];
+const modal = document.querySelector('#addBookModal');
+const modalButton = document.querySelector('.modalButton');
+const closeButton = document.querySelector(".close");
 const inputButton = document.querySelector('#inputButton');
 const inputBox = document.querySelector('#inputBox');
 const modalForm = document.querySelector('.modalForm');
