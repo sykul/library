@@ -14,17 +14,17 @@
         <dialog id="addBookModal" class="modal hidden">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <label for="inputBox">Add a book.</label>
                 <form class="modalForm" method="dialog">
-                    <input type="text" name="inputBox" id="inputBox">
+                    <label for="titleInputBox">Book title</label>
+                    <input type="text" name="titleInputBox" id="titleInputBox" required>
+                    <br>
+                    <label for="authorInputBox">Author</label>
+                    <input type="text" name="authorInputBox" id="authorInputBox">
                     <button type="submit" id="inputButton"></button>
                 </form>
             </div>
         </dialog>
         <div class="card-area">
-            <div class="card">
-                
-            </div>
         </div>
     </body>
 </html>

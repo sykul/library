@@ -1,22 +1,27 @@
 const myLibrary = [];
 
-function Book(title) {
+function Book(title, author) {
     this.title = title;
+    this.author = author;
 }
 
 function openModal() {
-    inputBox.value = '';
+    titleInputBox.value = '';
+    authorInputBox.value = '';
     modal.showModal();
 }
 
 function closeModal() {
-    inputBox.value = '';
+    titleInputBox.value = '';
+    authorInputBox.value = '';
     modal.close();
 }
 
 function addBookToArray() {
-    myLibrary.push(inputBox.value);
-    inputBox.value = '';
+    bookObject = new Book(titleInputBox.value, titleInputBox.value);
+    myLibrary.push(bookObject);
+    titleInputBox.value = '';
+    authorInputBox.value = '';
 }
 
 function displayBooks() {
@@ -25,8 +30,11 @@ function displayBooks() {
     for (const book in myLibrary) {
         const newDiv = document.createElement('div');
         newDiv.classList.add('card');
-        const bookTitle = document.createTextNode(myLibrary[book]);
+        const bookTitle = document.createTextNode(myLibrary[book].title);
+        const bookAuthor = document.createTextNode(myLibrary[book].author);
         newDiv.appendChild(bookTitle);
+        newDiv.appendChild(document.createElement('br'));
+        newDiv.appendChild(bookAuthor);
         cardArea.appendChild(newDiv);
     }
 }
@@ -35,7 +43,8 @@ const modal = document.querySelector('#addBookModal');
 const modalButton = document.querySelector('.modalButton');
 const closeButton = document.querySelector(".close");
 const inputButton = document.querySelector('#inputButton');
-const inputBox = document.querySelector('#inputBox');
+const titleInputBox = document.querySelector('#titleInputBox');
+const authorInputBox = document.querySelector('#authorInputBox');
 const modalForm = document.querySelector('.modalForm');
 const cardArea = document.querySelector('.card-area');
 
