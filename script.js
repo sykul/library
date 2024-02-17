@@ -27,16 +27,17 @@ function addBookToArray() {
 function displayBooks() {
     const cardAreaChildren = document.querySelectorAll('.card-area > div');
     cardAreaChildren.forEach((element) => element.remove());
-    for (const book in myLibrary) {
+    myLibrary.forEach((book, index) => {
         const newDiv = document.createElement('div');
         newDiv.classList.add('card');
-        const bookTitle = document.createTextNode(myLibrary[book].title);
-        const bookAuthor = document.createTextNode(myLibrary[book].author);
+        newDiv.dataset.bookIndex = `${index}`
+        const bookTitle = document.createTextNode(book.title);
+        const bookAuthor = document.createTextNode(book.author);
         newDiv.appendChild(bookTitle);
         newDiv.appendChild(document.createElement('br'));
         newDiv.appendChild(bookAuthor);
         cardArea.appendChild(newDiv);
-    }
+    })
 }
 
 const modal = document.querySelector('#addBookModal');
