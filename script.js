@@ -43,7 +43,6 @@ function displayBooks() {
         newDiv.appendChild(bookAuthor);
         cardArea.appendChild(newDiv);
     })
-    deleteBook()
 }
 
 const modal = document.querySelector('#addBookModal');
