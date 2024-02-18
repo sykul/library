@@ -24,6 +24,11 @@ function addBookToArray() {
     authorInputBox.value = '';
 }
 
+function deleteBook() {
+    const bookToDelete = document.querySelector('[data-book-index]');
+    bookToDelete.remove();
+}
+
 function displayBooks() {
     const cardAreaChildren = document.querySelectorAll('.card-area > div');
     cardAreaChildren.forEach((element) => element.remove());
@@ -38,6 +43,7 @@ function displayBooks() {
         newDiv.appendChild(bookAuthor);
         cardArea.appendChild(newDiv);
     })
+    deleteBook()
 }
 
 const modal = document.querySelector('#addBookModal');
@@ -56,5 +62,3 @@ modalForm.addEventListener('submit', function(event){
     addBookToArray();
     displayBooks();
 })
-
-displayBooks()
