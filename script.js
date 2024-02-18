@@ -51,8 +51,6 @@ const cardArea = document.querySelector('.card-area');
 
 modalButton.addEventListener('click', openModal, false);
 closeButton.addEventListener('click', closeModal, false);
-/* inputButton.addEventListener('click', displayBooks, false); */
-/* inputButton.addEventListener('click', closeModal, false); */
 modalForm.addEventListener('submit', function(event){
     event.preventDefault();
     addBookToArray();
