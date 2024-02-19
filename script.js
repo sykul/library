@@ -25,8 +25,9 @@ function addBookToArray() {
 }
 
 function deleteBook() {
-    const bookToDelete = document.querySelector('[data-book-index]');
-    bookToDelete.remove();
+/*     const bookToDelete = document.querySelector('[data-book-index]');
+    bookToDelete.remove(); */
+    this.parentNode
 }
 
 function displayBooks() {
@@ -38,6 +39,7 @@ function displayBooks() {
         newDiv.dataset.bookIndex = `${index}`
         const bookTitle = document.createTextNode(book.title);
         const bookAuthor = document.createTextNode(book.author);
+        newDiv.appendChild(deleteBookButton);
         newDiv.appendChild(bookTitle);
         newDiv.appendChild(document.createElement('br'));
         newDiv.appendChild(bookAuthor);
@@ -53,6 +55,7 @@ const titleInputBox = document.querySelector('#titleInputBox');
 const authorInputBox = document.querySelector('#authorInputBox');
 const modalForm = document.querySelector('.modalForm');
 const cardArea = document.querySelector('.card-area');
+const deleteBookButton = document.createElement('button');
 
 modalButton.addEventListener('click', openModal, false);
 closeButton.addEventListener('click', closeModal, false);
@@ -60,4 +63,7 @@ modalForm.addEventListener('submit', function(event){
     event.preventDefault();
     addBookToArray();
     displayBooks();
+})
+deleteBookButton.addEventListener('click', (e) => {
+    deleteBook()
 })
