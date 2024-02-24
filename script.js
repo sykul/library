@@ -18,16 +18,17 @@ function closeModal() {
 }
 
 function addBookToArray() {
-    bookObject = new Book(titleInputBox.value, titleInputBox.value);
+    bookObject = new Book(titleInputBox.value, authorInputBox.value);
     myLibrary.push(bookObject);
     titleInputBox.value = '';
     authorInputBox.value = '';
 }
 
-function deleteBook() {
-/*     const bookToDelete = document.querySelector('[data-book-index]');
-    bookToDelete.remove(); */
-    
+function deleteBook(bookIndex) {
+    const newArray =  myLibrary.filter(function (key) {
+        parentThis = this;
+        return key !== `${parentThis.bookIndex}`
+    })    
 }
 
 function displayBooks() {
@@ -45,6 +46,11 @@ function displayBooks() {
         newDiv.appendChild(document.createElement('br'));
         newDiv.appendChild(bookAuthor);
         cardArea.appendChild(newDiv);
+        deleteBookButton.addEventListener('click', (e) => {
+            bookIndex = newDiv.dataset.bookIndex;
+            deleteBook(bookIndex);
+            displayBooks();
+        })
     })
 }
 
@@ -63,7 +69,4 @@ modalForm.addEventListener('submit', function(event){
     event.preventDefault();
     addBookToArray();
     displayBooks();
-})
-deleteBookButton.addEventListener('click', (e) => {
-    deleteBook()
 })
