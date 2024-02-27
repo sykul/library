@@ -25,10 +25,7 @@ function addBookToArray() {
 }
 
 function deleteBook(bookIndex) {
-    const newArray =  myLibrary.filter(function (key) {
-        parentThis = this;
-        return key !== `${parentThis.bookIndex}`
-    })    
+    return myLibrary.splice(bookIndex, 1)
 }
 
 function displayBooks() {
