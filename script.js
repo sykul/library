@@ -24,6 +24,10 @@ function addBookToArray() {
     authorInputBox.value = '';
 }
 
+function addBookToDisplay() {
+    
+}
+
 function deleteBook(bookIndex) {
     return myLibrary.splice(bookIndex, 1)
 }
@@ -34,7 +38,6 @@ function displayBooks() {
     myLibrary.forEach((book, index) => {
         const newDiv = document.createElement('div');
         newDiv.classList.add('card');
-        newDiv.dataset.bookIndex = `${index}`
         const bookTitle = document.createTextNode(book.title);
         const bookAuthor = document.createTextNode(book.author);
         const deleteBookButton = document.createElement('button');
@@ -44,8 +47,7 @@ function displayBooks() {
         newDiv.appendChild(bookAuthor);
         cardArea.appendChild(newDiv);
         deleteBookButton.addEventListener('click', (e) => {
-            bookIndex = newDiv.dataset.bookIndex;
-            deleteBook(bookIndex);
+            deleteBook(index);
             displayBooks();
         })
     })
