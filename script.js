@@ -36,20 +36,21 @@ function displayBooks() {
     const cardAreaChildren = document.querySelectorAll('.card-area > div');
     cardAreaChildren.forEach((element) => element.remove());
     myLibrary.forEach((book, index) => {
-        const newDiv = document.createElement('div');
-        newDiv.classList.add('card');
+        const newCard = document.createElement('div');
+        newCard.classList.add('card');
         const bookTitle = document.createTextNode(book.title);
         const bookAuthor = document.createTextNode(book.author);
         const deleteBookButton = document.createElement('button');
-        newDiv.appendChild(deleteBookButton);
-        newDiv.appendChild(bookTitle);
-        newDiv.appendChild(document.createElement('br'));
-        newDiv.appendChild(bookAuthor);
-        cardArea.appendChild(newDiv);
-        deleteBookButton.addEventListener('click', (e) => {
+        deleteBookButton.classList.add('delete-button')
+        newCard.appendChild(deleteBookButton);
+        newCard.appendChild(bookTitle);
+        newCard.appendChild(document.createElement('br'));
+        newCard.appendChild(bookAuthor);
+        cardArea.appendChild(newCard);
+/*         deleteBookButton.addEventListener('click', (e) => {
             deleteBook(index);
             displayBooks();
-        })
+        }) */
     })
 }
 
@@ -62,6 +63,11 @@ const authorInputBox = document.querySelector('#authorInputBox');
 const modalForm = document.querySelector('.modalForm');
 const cardArea = document.querySelector('.card-area');
 
+cardArea.addEventListener('click', function(event){
+    if(event.target.classList.contains('delete-button')) {
+        console.log(event.target);
+    }
+})
 modalButton.addEventListener('click', openModal, false);
 closeButton.addEventListener('click', closeModal, false);
 modalForm.addEventListener('submit', function(event){
