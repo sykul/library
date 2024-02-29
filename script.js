@@ -67,7 +67,7 @@ const cardArea = document.querySelector('.card-area');
 
 cardArea.addEventListener('click', function(event){
     if(event.target.classList.contains('delete-button')) {
-        console.log(event.target.parentElement);
+        console.log(event.target.parentElement.dataset.bookIndex);
     }
 })
 modalButton.addEventListener('click', openModal, false);
