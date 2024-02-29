@@ -42,6 +42,8 @@ function displayBooks() {
         const bookAuthor = document.createTextNode(book.author);
         const deleteBookButton = document.createElement('button');
         deleteBookButton.classList.add('delete-button')
+        newCard.classList.add('card');
+        newCard.dataset.bookIndex = `${index}`
         newCard.appendChild(deleteBookButton);
         newCard.appendChild(bookTitle);
         newCard.appendChild(document.createElement('br'));
@@ -65,7 +67,7 @@ const cardArea = document.querySelector('.card-area');
 
 cardArea.addEventListener('click', function(event){
     if(event.target.classList.contains('delete-button')) {
-        console.log(event.target);
+        console.log(event.target.parentElement);
     }
 })
 modalButton.addEventListener('click', openModal, false);
