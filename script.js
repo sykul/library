@@ -1,6 +1,8 @@
 const myLibrary = [];
+let uniqueBookIndex = 0;
 
-function Book(title, author) {
+function Book(bookIndex, title, author) {
+    this.bookIndex = bookIndex;
     this.title = title;
     this.author = author;
 }
@@ -17,19 +19,20 @@ function closeModal() {
     modal.close();
 }
 
-function addBookToArray() {
-    bookObject = new Book(titleInputBox.value, authorInputBox.value);
+function addBook() {
+    bookObject = new Book(uniqueBookIndex, titleInputBox.value, authorInputBox.value);
     myLibrary.push(bookObject);
+
+    const newCard = document.createElement('div');
+    newCard.classList.add('card');
+    newCard.dataset.bookIndex = `${uniqueBookIndex++}`
     titleInputBox.value = '';
     authorInputBox.value = '';
 }
 
-function addBookToDisplay() {
-    
-}
-
 function deleteBook(bookIndex) {
-    return myLibrary.splice(bookIndex, 1)
+    myLibrary.splice(bookIndex, 1);
+    document.querySelector(`[data-book-index="${bookIndex}"]`).remove();
 }
 
 function displayBooks() {
@@ -70,6 +73,5 @@ modalButton.addEventListener('click', openModal, false);
 closeButton.addEventListener('click', closeModal, false);
 modalForm.addEventListener('submit', function(event){
     event.preventDefault();
-    addBookToArray();
-    displayBooks();
+    addBook();
 })
