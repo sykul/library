@@ -26,6 +26,16 @@ function addBook() {
     const newCard = document.createElement('div');
     newCard.classList.add('card');
     newCard.dataset.bookIndex = `${uniqueBookIndex++}`
+    const bookTitle = document.createTextNode(bookObject.title);
+    const bookAuthor = document.createTextNode(bookObject.author);
+    const deleteBookButton = document.createElement('button');
+    deleteBookButton.classList.add('delete-button')
+
+    newCard.appendChild(deleteBookButton);
+    newCard.appendChild(bookTitle);
+    newCard.appendChild(document.createElement('br'));
+    newCard.appendChild(bookAuthor);
+    cardArea.appendChild(newCard);
     titleInputBox.value = '';
     authorInputBox.value = '';
 }
@@ -39,19 +49,7 @@ function displayBooks() {
     const cardAreaChildren = document.querySelectorAll('.card-area > div');
     cardAreaChildren.forEach((element) => element.remove());
     myLibrary.forEach((book, index) => {
-        const newCard = document.createElement('div');
-        newCard.classList.add('card');
-        const bookTitle = document.createTextNode(book.title);
-        const bookAuthor = document.createTextNode(book.author);
-        const deleteBookButton = document.createElement('button');
-        deleteBookButton.classList.add('delete-button')
-        newCard.classList.add('card');
-        newCard.dataset.bookIndex = `${index}`
-        newCard.appendChild(deleteBookButton);
-        newCard.appendChild(bookTitle);
-        newCard.appendChild(document.createElement('br'));
-        newCard.appendChild(bookAuthor);
-        cardArea.appendChild(newCard);
+
     })
 }
 
