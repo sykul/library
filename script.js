@@ -1,8 +1,8 @@
-const myLibrary = [];
+let myLibrary = [];
 let uniqueBookIndex = 0;
 
 function Book(bookIndex, title, author) {
-    this.bookIndex = bookIndex;
+    this.uniqueBookIndex = bookIndex;
     this.title = title;
     this.author = author;
 }
@@ -41,16 +41,8 @@ function addBook() {
 }
 
 function deleteBook(bookIndex) {
-    myLibrary.splice(bookIndex, 1);
+    myLibrary = myLibrary.filter(item => !(item.uniqueBookIndex==bookIndex));
     document.querySelector(`[data-book-index="${bookIndex}"]`).remove();
-}
-
-function displayBooks() {
-    const cardAreaChildren = document.querySelectorAll('.card-area > div');
-    cardAreaChildren.forEach((element) => element.remove());
-    myLibrary.forEach((book, index) => {
-
-    })
 }
 
 const modal = document.querySelector('#addBookModal');
