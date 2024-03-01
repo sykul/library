@@ -49,10 +49,6 @@ function displayBooks() {
         newCard.appendChild(document.createElement('br'));
         newCard.appendChild(bookAuthor);
         cardArea.appendChild(newCard);
-/*         deleteBookButton.addEventListener('click', (e) => {
-            deleteBook(index);
-            displayBooks();
-        }) */
     })
 }
 
@@ -67,7 +63,7 @@ const cardArea = document.querySelector('.card-area');
 
 cardArea.addEventListener('click', function(event){
     if(event.target.classList.contains('delete-button')) {
-        console.log(event.target.parentElement.dataset.bookIndex);
+        deleteBook(event.target.parentElement.dataset.bookIndex);
     }
 })
 modalButton.addEventListener('click', openModal, false);
