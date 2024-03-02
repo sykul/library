@@ -1,10 +1,11 @@
 let myLibrary = [];
 let uniqueBookIndex = 0;
 
-function Book(bookIndex, title, author) {
+function Book(bookIndex, title, author, readStatus) {
     this.uniqueBookIndex = bookIndex;
     this.title = title;
     this.author = author;
+    this.readStatus = readStatus;
 }
 
 function openModal() {
@@ -19,17 +20,25 @@ function closeModal() {
     modal.close();
 }
 
+function toggleReadStatus() {
+    
+}
+
 function addBook() {
-    bookObject = new Book(uniqueBookIndex, titleInputBox.value, authorInputBox.value);
+    bookObject = new Book(uniqueBookIndex, titleInputBox.value, authorInputBox.value, false);
     myLibrary.push(bookObject);
 
     const newCard = document.createElement('div');
     newCard.classList.add('card');
     newCard.dataset.bookIndex = `${uniqueBookIndex++}`
+
     const bookTitle = document.createTextNode(bookObject.title);
     const bookAuthor = document.createTextNode(bookObject.author);
     const deleteBookButton = document.createElement('button');
     deleteBookButton.classList.add('delete-button')
+
+    const tickBox = document.createElement('input');
+    
 
     newCard.appendChild(deleteBookButton);
     newCard.appendChild(bookTitle);
