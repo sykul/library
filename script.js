@@ -6,6 +6,9 @@ function Book(bookIndex, title, author, readStatus) {
     this.title = title;
     this.author = author;
     this.readStatus = readStatus;
+    this.toggleReadStatus = function(bookToToggle) {
+        console.log(bookToToggle);
+    }
 }
 
 function openModal() {
@@ -18,10 +21,6 @@ function closeModal() {
     titleInputBox.value = '';
     authorInputBox.value = '';
     modal.close();
-}
-
-function toggleReadStatus() {
-    
 }
 
 function addBook() {
@@ -38,7 +37,9 @@ function addBook() {
     deleteBookButton.classList.add('delete-button')
 
     const tickBox = document.createElement('input');
-    
+    tickBox.setAttribute('type','checkbox');
+    tickBox.classList.add('tickbox');
+    newCard.append(tickBox);
 
     newCard.appendChild(deleteBookButton);
     newCard.appendChild(bookTitle);
@@ -66,6 +67,8 @@ const cardArea = document.querySelector('.card-area');
 cardArea.addEventListener('click', function(event){
     if(event.target.classList.contains('delete-button')) {
         deleteBook(event.target.parentElement.dataset.bookIndex);
+    } else if(event.target.classList.contains('tickbox')) {
+        bookObject.toggleReadStatus(event.target.parentElement.dataset.bookIndex);
     }
 })
 modalButton.addEventListener('click', openModal, false);
