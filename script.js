@@ -10,7 +10,6 @@ function Book(bookIndex, title, author, readStatus) {
         myLibrary
         .filter(book => book.uniqueBookIndex == bookToToggle)
         .map(book => book.readStatus = !book.readStatus);
-        console.log(myLibrary);
     }
 }
 
