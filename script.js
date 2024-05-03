@@ -1,17 +1,27 @@
 let myLibrary = [];
 let uniqueBookIndex = 0;
 
-function Book(bookIndex, title, author, readStatus) {
-    this.uniqueBookIndex = bookIndex;
-    this.title = title;
-    this.author = author;
-    this.readStatus = readStatus;
-    this.toggleReadStatus = function(bookToToggle) {
-        myLibrary
-        .filter(book => book.uniqueBookIndex == bookToToggle)
-        .map(book => book.readStatus = !book.readStatus);
+
+class Library {
+    constructor() {
+        this.bookList = [];
     }
 }
+
+class Book {
+    constructor(bookIndex, title, author, readStatus) {
+        this.uniqueBookIndex = bookIndex;
+        this.title = title;
+        this.author = author;
+        this.readStatus = readStatus;
+    }
+
+    set readStatus(value) {
+        this.value = !this.value;
+    }
+
+}
+
 
 function openModal() {
     titleInputBox.value = '';
