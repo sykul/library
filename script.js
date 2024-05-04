@@ -3,24 +3,50 @@ let uniqueBookIndex = 0;
 
 
 class Library {
-    constructor() {
+
+    #uniqueBookIndex = 0;
+
+    constructor(cardArea) {
         this.bookList = [];
+        this.container = cardArea;
     }
+
+    addBookToLibrary(book) {
+        book.index = this.#uniqueBookIndex;
+        this.bookList.push(book);
+        this.#uniqueBookIndex++;
+    }
+
+
+    updateDOM() {
+        /* clear list in DOM */
+        
+        /* take elements of array, add them to DOM */
+
+
+    }
+
+
+
 }
 
 class Book {
-    constructor(bookIndex, title, author, readStatus) {
-        this.uniqueBookIndex = bookIndex;
+    constructor(title, author) {
         this.title = title;
         this.author = author;
-        this.readStatus = readStatus;
+        this.readStatus = false;
+        this.index;
     }
 
-    set readStatus(value) {
-        this.value = !this.value;
+    toggleReadStatus() {
+        this.readStatus = !this.readStatus;
     }
 
 }
+
+myLibrary = new Library();
+book = new Book('title', 'author')
+
 
 
 function openModal() {
