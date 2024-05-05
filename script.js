@@ -1,7 +1,3 @@
-let myLibrary = [];
-let uniqueBookIndex = 0;
-
-
 class Library {
 
     #uniqueBookIndex = 0;
@@ -18,9 +14,31 @@ class Library {
     }
 
     createCardDiv(book) {
+        /* create card div and assign values */
         const card = document.createElement('div');
         card.classList.add('card');
+        card.dataset.bookIndex = book.index;
 
+        /* create items to add to card div */
+        const bookTitle = document.createTextNode(book.title);
+        const bookAuthor = document.createTextNode(book.author);
+        const deleteBookButton = document.createElement('button');
+        deleteBookButton.classList.add('delete-button')
+        const tickBox = document.createElement('input');
+        tickBox.setAttribute('type','checkbox');
+        tickBox.classList.add('tickbox');
+
+        /* add items to card div */
+        card.appendChild(deleteBookButton);
+        card.appendChild(bookTitle);
+        card.appendChild(document.createElement('br'));
+        card.appendChild(bookAuthor);
+        card.append(tickBox);
+
+        /*  */
+        cardArea.appendChild(card);
+        titleInputBox.value = '';
+        authorInputBox.value = '';
     }
 
     updateDOM(cardContainer) {
@@ -29,12 +47,12 @@ class Library {
             this.cardContainer.removeChild(this.cardContainer.firstChild)
         }
         /* take elements of array, add them to DOM */
-
-
     }
 
-
-
+    deleteBook(bookIndex) {
+        myLibrary = myLibrary.filter(item => !(item.index==bookIndex));
+        document.querySelector(`[data-book-index="${bookIndex}"]`).remove();
+    }
 }
 
 class Book {
@@ -51,10 +69,6 @@ class Book {
 
 }
 
-
-
-
-
 function openModal() {
     titleInputBox.value = '';
     authorInputBox.value = '';
@@ -65,38 +79,6 @@ function closeModal() {
     titleInputBox.value = '';
     authorInputBox.value = '';
     modal.close();
-}
-
-function addBook() {
-    bookObject = new Book(uniqueBookIndex, titleInputBox.value, authorInputBox.value, false);
-    myLibrary.push(bookObject);
-
-    const newCard = document.createElement('div');
-    newCard.classList.add('card');
-    newCard.dataset.bookIndex = `${uniqueBookIndex++}`
-
-    const bookTitle = document.createTextNode(bookObject.title);
-    const bookAuthor = document.createTextNode(bookObject.author);
-    const deleteBookButton = document.createElement('button');
-    deleteBookButton.classList.add('delete-button')
-
-    const tickBox = document.createElement('input');
-    tickBox.setAttribute('type','checkbox');
-    tickBox.classList.add('tickbox');
-    newCard.append(tickBox);
-
-    newCard.appendChild(deleteBookButton);
-    newCard.appendChild(bookTitle);
-    newCard.appendChild(document.createElement('br'));
-    newCard.appendChild(bookAuthor);
-    cardArea.appendChild(newCard);
-    titleInputBox.value = '';
-    authorInputBox.value = '';
-}
-
-function deleteBook(bookIndex) {
-    myLibrary = myLibrary.filter(item => !(item.uniqueBookIndex==bookIndex));
-    document.querySelector(`[data-book-index="${bookIndex}"]`).remove();
 }
 
 const modal = document.querySelector('#addBookModal');
