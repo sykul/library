@@ -17,10 +17,17 @@ class Library {
         this.#uniqueBookIndex++;
     }
 
+    createCardDiv(book) {
+        const card = document.createElement('div');
+        card.classList.add('card');
 
-    updateDOM() {
+    }
+
+    updateDOM(cardContainer) {
         /* clear list in DOM */
-        
+        while (this.cardContainer.firstChild) {
+            this.cardContainer.removeChild(this.cardContainer.firstChild)
+        }
         /* take elements of array, add them to DOM */
 
 
@@ -44,8 +51,7 @@ class Book {
 
 }
 
-myLibrary = new Library();
-book = new Book('title', 'author')
+
 
 
 
@@ -115,3 +121,14 @@ modalForm.addEventListener('submit', function(event){
     event.preventDefault();
     addBook();
 })
+
+myLibrary = new Library();
+openModal();
+closeModal();
+myLibrary.addBookToLibrary(new Book('title1', 'author1'));
+myLibrary.addBookToLibrary(new Book('title2', 'author2'));
+myLibrary.addBookToLibrary(new Book('title3', 'author3'));
+myLibrary.addBookToLibrary(new Book('title4', 'author4'));
+myLibrary.addBookToLibrary(new Book('title5', 'author5'));
+myLibrary.addBookToLibrary(new Book('title6', 'author6'));
+myLibrary.updateDOM(cardArea);
