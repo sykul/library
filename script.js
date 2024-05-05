@@ -101,7 +101,7 @@ modalButton.addEventListener('click', openModal, false);
 closeButton.addEventListener('click', closeModal, false);
 modalForm.addEventListener('submit', function(event){
     event.preventDefault();
-    addBook();
+    myLibrary.addBookToLibrary(new Book(titleInputBox.value, authorInputBox.value));
 })
 
 myLibrary = new Library();
