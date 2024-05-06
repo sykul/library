@@ -109,6 +109,7 @@ closeButton.addEventListener('click', closeModal, false);
 modalForm.addEventListener('submit', function(event){
     event.preventDefault();
     myLibrary.addBookToLibrary(new Book(titleInputBox.value, authorInputBox.value));
+    myLibrary.updateDOM(cardArea);
 })
 
 myLibrary = new Library();
