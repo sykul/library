@@ -54,7 +54,7 @@ class Library {
     }
 
     deleteBook(bookIndex) {
-        myLibrary = myLibrary.filter(item => !(item.index==bookIndex));
+        myLibrary.bookList = myLibrary.bookList.filter(item => !(item.index==bookIndex));
         document.querySelector(`[data-book-index="${bookIndex}"]`).remove();
     }
 }
@@ -97,7 +97,7 @@ const cardArea = document.querySelector('.card-area');
 cardArea.addEventListener('click', function(event){
     let targetBookIndex = event.target.parentElement.dataset.bookIndex;
     if(event.target.classList.contains('delete-button')) {
-        deleteBook(targetBookIndex);
+        myLibrary.deleteBook(targetBookIndex);
     } else if(event.target.classList.contains('tickbox')) {
         indexOfBook = event.target.parentElement.dataset.bookIndex
         bookToToggle = myLibrary.bookList.find(obj => {return obj.index == indexOfBook});
