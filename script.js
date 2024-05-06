@@ -43,10 +43,14 @@ class Library {
 
     updateDOM(cardContainer) {
         /* clear list in DOM */
-        while (this.cardContainer.firstChild) {
-            this.cardContainer.removeChild(this.cardContainer.firstChild)
+        while (cardContainer.firstChild) {
+            cardContainer.removeChild(cardContainer.firstChild)
         }
         /* take elements of array, add them to DOM */
+        for (let i in this.bookList) {
+            console.log(this.bookList[i]);
+            this.createCardDiv(this.bookList[i]);
+        }
     }
 
     deleteBook(bookIndex) {
@@ -91,10 +95,13 @@ const modalForm = document.querySelector('.modalForm');
 const cardArea = document.querySelector('.card-area');
 
 cardArea.addEventListener('click', function(event){
+    let targetBookIndex = event.target.parentElement.dataset.bookIndex;
     if(event.target.classList.contains('delete-button')) {
-        deleteBook(event.target.parentElement.dataset.bookIndex);
+        deleteBook(targetBookIndex);
     } else if(event.target.classList.contains('tickbox')) {
-        bookObject.toggleReadStatus(event.target.parentElement.dataset.bookIndex);
+        indexOfBook = event.target.parentElement.dataset.bookIndex
+        bookToToggle = myLibrary.bookList.find(obj => {return obj.index == indexOfBook});
+        bookToToggle.toggleReadStatus();
     }
 })
 modalButton.addEventListener('click', openModal, false);
